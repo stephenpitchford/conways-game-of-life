@@ -1,0 +1,90 @@
+:root {
+  --block-size: 10px;
+  --theme-color: #5640b7;
+  --content-border-color: #d3d3d3;
+}
+
+body {
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 10px auto;
+  padding: 30px;
+  background: #f8f8f8;
+}
+
+header {
+  border-bottom: 1px solid var(--content-border-color);
+  margin-bottom: 20px;
+}
+
+header h1 {
+  margin-top: 10px;
+}
+
+.board-container {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.generation-count,
+.population-count {
+  display: inline-block;
+  border: 1px solid var(--content-border-color);
+  padding: 7px 14px;
+  font-size: 14px;
+  margin: 0 5px;
+}
+
+.board {
+  margin-top: 20px;
+}
+
+.column {
+  border: 1px solid #ccc;
+  width: var(--block-size);
+  height: var(--block-size);
+  display: inline-block;
+  line-height: 1;
+
+  /* This is a hack since react wasn't triggering the click events on the whole cell area. */
+  position: relative;
+  z-index: 100;
+}
+
+.column.alive {
+  background: var(--theme-color);
+}
+
+.column:not(:first-of-type) {
+  border-left: none;
+}
+
+.row:not(:first-of-type) .column {
+  border-top: none;
+}
+
+.row {
+  line-height: 0;
+  white-space: nowrap;
+}
+
+button {
+  background: var(--theme-color);
+  color: #fff;
+  border: 0;
+  border-radius: 0;
+  padding: 8px 14px;
+  font-size: 14px;
+  margin: 0 5px;
+}
+
+button:disabled {
+  background: #7166a3;
+}
